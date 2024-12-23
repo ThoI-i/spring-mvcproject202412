@@ -106,9 +106,20 @@ public class BoardApiController {
         }
 
         // 게시물 원본데이터를 클라이언트 스펙에 맞게 변환
+//        리펙토링 전
+//        BoardDetailResponse response = new BoardDetailResponse();
+//        response.setBno(foundBoard.getId());
+//        response.setTitle(foundBoard.getTitle());
+//        response.setContent(foundBoard.getContent());
+//        response.setDate(foundBoard.getRegDateTime());
+
+//         return ResponseEntity
+//                .ok()
+//                .body(response);
         return ResponseEntity
                 .ok()
                 .body(BoardDetailResponse.from(foundBoard));
+
     }
 
 }
