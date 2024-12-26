@@ -7,3 +7,32 @@ CREATE TABLE scores (
 	eng INT NOT NULL,
     math INT NOT NULL
 );
+
+========================================================
+
+CREATE TABLE tbl_board (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    content TEXT NOT NULL,
+    VIEW_COUNT INT DEFAULT 0,
+    reg_date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+SELECT * FROM tbl_board;
+
+========================================================
+
+※ 요약
+
+ 의존 관계 : 일 시키는 것
+
+      클라이언트 담당(요청/응답)
+      BoardApiController ->
+
+      핵심 비즈니스 로직처리 (트랜잭션, DTO변환)
+      BoardService ->
+
+      데이터베이스 액세스
+      BoardRepository ->
+
+      ORM : DB데이터 객체로 상호변환
+      JdbcTemplate
