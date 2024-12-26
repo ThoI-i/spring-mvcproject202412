@@ -1,7 +1,6 @@
 package com.spring.mvcproject.database.springjdbc.entity;
 
 /*
-
 CREATE TABLE products (
     id BIGINT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL COMMENT '상품명',
@@ -24,7 +23,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class Product {
     private Long id;
     private String name;
