@@ -1,0 +1,9 @@
+MySqL 입력
+
+CREATE TABLE scores (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    kor INT NOT NULL,
+	eng INT NOT NULL,
+    math INT NOT NULL
+);
