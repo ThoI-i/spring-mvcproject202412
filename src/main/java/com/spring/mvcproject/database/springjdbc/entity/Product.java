@@ -1,6 +1,7 @@
 package com.spring.mvcproject.database.springjdbc.entity;
 
 /*
+
 CREATE TABLE products (
     id BIGINT AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL COMMENT '상품명',
@@ -16,6 +17,8 @@ CREATE TABLE products (
 
 import lombok.*;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 // 추천 사항: DB컬럼명과 이 클래스의 필드명을 똑같이만드세요.
@@ -33,4 +36,15 @@ public class Product {
     private String seller;
     private String status;
     private LocalDateTime createdAt;
+
+    public Product(ResultSet rs) throws SQLException {
+        this.id = rs.getLong("id");
+        this.name = rs.getString("name");
+        this.price = rs.getInt("price");
+        this.description = rs.getString("description");
+        this.seller = rs.getString("seller");
+        this.status = rs.getString("status");
+        this.stockQuantity = rs.getInt("stock_quantity");
+        this.createdAt = rs.getTimestamp("created_at").toLocalDateTime();
+    }
 }
