@@ -7,18 +7,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class PetRepositoryTest {
 
     @Autowired
-    private PetRepository petRepository;
+    PetRepository petRepository;
 
     @Test
     void saveTest() {
         Pet pet = Pet.builder()
-                .petName("둘기둘기")
-                .petAge(1)
-                .injection(false)
+                .petName("누렁이")
+                .petAge(3)
+                .injection(true)
                 .build();
 
         petRepository.save(pet);
@@ -26,7 +28,7 @@ class PetRepositoryTest {
 
     @Test
     void findByIdTest() {
-        Pet foundPet = petRepository.findById(1L);
+        Pet foundPet = petRepository.findById(2L);
 
         System.out.println("\n\nfoundPet = " + foundPet);
     }
@@ -35,7 +37,7 @@ class PetRepositoryTest {
     void findAllTest() {
         List<Pet> petList = petRepository.findAll();
 
-        System.out.println("\n\n =================== List of pet ===================");
+        System.out.println("\n\n========== List of pet ==========");
         petList.forEach(System.out::println);
     }
 
@@ -52,4 +54,5 @@ class PetRepositoryTest {
         int count = petRepository.petCount();
         System.out.println("count = " + count);
     }
+
 }
