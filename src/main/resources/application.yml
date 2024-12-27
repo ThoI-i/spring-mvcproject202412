@@ -21,10 +21,12 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 
   # MyBatis 설정
-  mybatis:
+mybatis:
     #sql file location
   mapper-locations: classpath:mapper/**/*.xml
   # /** 이후 경로에 모든 파일/폴더들 /* 파일명이 뭐든지 쓰겠다
-  type-aliases-package: com.spring.mvcproject
+  type-aliases-package: com.spring.mvcproject.database.mybatis # 위 패키지 내에 있는 경로에서 찾음
+  # 단, 중복 파일 명이 2개일 때 못찾음
+  # 보통 설계 시 파일명 유일하게 만듬
   configuration:
    map-underscore-to-camel-case: true
