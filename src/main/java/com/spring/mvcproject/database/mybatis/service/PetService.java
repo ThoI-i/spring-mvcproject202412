@@ -1,6 +1,7 @@
 package com.spring.mvcproject.database.mybatis.service;
 
 import com.spring.mvcproject.database.mybatis.PetRepository;
+import com.spring.mvcproject.database.mybatis.dto.request.PetSaveRequest;
 import com.spring.mvcproject.database.mybatis.dto.response.PetDetailResponse;
 import com.spring.mvcproject.database.mybatis.dto.response.PetListResponse;
 import com.spring.mvcproject.database.mybatis.dto.response.PetResponse;
@@ -39,13 +40,14 @@ public class PetService {
     // 개별조회 중간처리
     public PetDetailResponse getPet(Long id) {
         Pet pet = petRepository.findById(id);
+
         // 클라이언트에게 반환할 DTO로 변환
         return PetDetailResponse.from(pet);
     }
 
     // 생성 중간처리
-    public boolean createPet(Pet pet) {
-        boolean savedPet = petRepository.save(pet);
+    public boolean createPet(PetSaveRequest pet) {
+        boolean savedPet = petRepository.save(pet.toEntity());
         return savedPet;
     }
 
