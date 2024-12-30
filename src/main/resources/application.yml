@@ -9,6 +9,12 @@ logging:
 #logging.level.org.springframework.web.servlet.DispatcherServlet=DEBUG
 
 spring:
+  # file upload setting
+  servlet:
+    multipart:
+      max-file-size: 10MB # 업로드한 하나의 파일의 최대 용량
+      max-request-size: 100MB #한 번에 업로드할 수 있는 파일의 총 용량
+
   #jsp setting
   mvc:
     view:
@@ -31,3 +37,9 @@ mybatis:
   # 보통 설계 시 파일명 유일하게 만듬
   configuration:
    map-underscore-to-camel-case: true
+
+# custom setting - file
+# 사용자가 올린 파일들을 어디 저장할거냐?
+file:
+  upload:
+    location: ${user.home}/spring/upload/
